@@ -21,22 +21,22 @@ class Robot():
     
     def move(self):
         if self.dir == 'NORTH':
-            if (self.y >= 0) and (self.y <= 4):
+            if self.y in range(0,4):
                 self.y += 1
             else:
                 print("Robot will fall off the table on this move")
         elif self.dir == 'SOUTH':
-            if (self.y >= 0) and (self.y <= 4):
+            if self.y in range(1,5):
                 self.y -= 1
             else:
                 print("Robot will fall off the table on this move")
         elif self.dir == 'EAST':
-            if (self.x >= 0) and (self.x <= 4):
+            if self.x in range(0,4):
                 self.x += 1
             else:
                 print("Robot will fall off the table on this move")
         elif self.dir == 'WEST':
-            if (self.x > 0) and (self.x <= 4):
+            if self.x in range(1,5):
                 self.x -= 1
             else:
                 print("Robot will fall off the table on this move")
@@ -79,6 +79,7 @@ robot.move()
 current_position = robot.report()
 
 robot.place(0,1,'north')
+current_position = robot.report()
 
 
 
