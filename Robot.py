@@ -57,7 +57,11 @@ robot = Robot(0,0,'NORTH')
 current_position = robot.report()
 robot.move()
 robot.left()
+robot.move()
 robot.right()
+robot.move()
+current_position = robot.report()
+
 robot.place(0,1,'north')
 
 
