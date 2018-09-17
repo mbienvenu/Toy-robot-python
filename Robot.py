@@ -107,23 +107,18 @@ robot.report()'''
 
 filepath = 'commands.txt'
 with open(filepath) as fp:
-    line = fp.readline()
-    print(line)
-    for line in fp:
-        if line == 'REPORT':
-            print('1')
+    
+    for line in enumerate(fp):
+        if line[1].rstrip() == 'REPORT':
             current_position = robot.report()
-        elif line == 'MOVE':
-            print('2')
+        elif line[1].rstrip() == 'MOVE':
             robot.move()
-        elif line == 'RIGHT':
-            print('3')
+        elif line[1].rstrip() == 'RIGHT':
             robot.right()
-        elif line == 'LEFT':
-            print('4')
+        elif line[1].rstrip() == 'LEFT':
             robot.left()
-        line = fp.readline()
 
 
+current_position = robot.report()
 
 
