@@ -78,7 +78,7 @@ class Robot():
 
 
 
-
+'''
 robot = Robot(0,0,'NORTH')
 current_position = robot.report()
 robot.move()
@@ -94,7 +94,7 @@ current_position = robot.report()
 robot.place(-1,-1,'WEST')
 current_position = robot.report()
 robot.right()
-current_position = robot.report()
+current_position = robot.report()'''
 
 
 
@@ -140,5 +140,25 @@ def main():
 
 if __name__ == '__main__':  
    main()
-   
 '''
+
+
+robot = Robot(0,0,'NORTH')    
+filepath = 'commands.txt'
+with open(filepath) as fp:
+       for line in enumerate(fp):
+           if line[1].rstrip() == 'REPORT':
+               current_position = robot.report()
+           elif line[1].rstrip() == 'MOVE':
+               robot.move()
+           elif line[1].rstrip() == 'RIGHT':
+               robot.right()
+           elif line[1].rstrip() == 'LEFT':
+               robot.left()
+           elif line[1].rstrip().split(' ')[0] == 'PLACE':
+               placebot = line[1].rstrip().split(' ')[1]
+               robot.place(int(placebot.split(',')[0]),int(placebot.split(',')[1]),
+                           placebot.split(',')[2])
+
+current_position = robot.report()
+   
