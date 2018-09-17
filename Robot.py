@@ -17,9 +17,12 @@ class Robot():
         self.dir = dir 
         
     def place(self,x,y,dir):
-        self.x = x 
-        self.y = y
-        self.dir = dir 
+        if x in range(0,5) and y in range(0,5):        
+            self.x = x 
+            self.y = y
+            self.dir = dir 
+        else:
+            print("Robot is not placed in the right bounds of the table")
     
     def move(self):
         if self.dir == 'NORTH':
@@ -75,7 +78,7 @@ class Robot():
 
 
 
-"""
+
 robot = Robot(0,0,'NORTH')
 current_position = robot.report()
 robot.move()
@@ -88,11 +91,10 @@ robot.right()
 current_position = robot.report()
 robot.move()
 current_position = robot.report()
-
-robot.place(2,2,'WEST')
+robot.place(-1,-1,'WEST')
 current_position = robot.report()
 robot.right()
-current_position = robot.report()"""
+current_position = robot.report()
 
 
 
@@ -114,7 +116,7 @@ for line in commands.readlines():
         robot.left()
 
 robot.report()'''
-
+'''
 def main():  
    filepath = sys.argv[1]
 
@@ -138,3 +140,5 @@ def main():
 
 if __name__ == '__main__':  
    main()
+   
+'''
