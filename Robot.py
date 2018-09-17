@@ -65,6 +65,7 @@ class Robot():
         print(self.x,self.y,self.dir)
         return {'x':self.x, 'y':self.y, 'dir': self.dir}
  
+"""
 robot = Robot(0,0,'NORTH')
 current_position = robot.report()
 robot.move()
@@ -81,9 +82,47 @@ current_position = robot.report()
 robot.place(2,2,'WEST')
 current_position = robot.report()
 robot.right()
+current_position = robot.report()"""
+
+robot = Robot(0,0,'NORTH')
 current_position = robot.report()
+'''
+commands = open("commands.txt","r")
+for line in commands.readlines():
+    if line == 'REPORT':
+        print('1')
+        current_position = robot.report()
+    elif line == 'MOVE':
+        print('2')
+        robot.move()
+    elif line == 'RIGHT':
+        print('3')
+        robot.right()
+    elif line == 'LEFT':
+        print('4')
+        robot.left()
+
+robot.report()'''
 
 
+filepath = 'commands.txt'
+with open(filepath) as fp:
+    line = fp.readline()
+    print(line)
+    for line in fp:
+        if line == 'REPORT':
+            print('1')
+            current_position = robot.report()
+        elif line == 'MOVE':
+            print('2')
+            robot.move()
+        elif line == 'RIGHT':
+            print('3')
+            robot.right()
+        elif line == 'LEFT':
+            print('4')
+            robot.left()
+        line = fp.readline()
 
 
 
