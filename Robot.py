@@ -7,6 +7,8 @@ Created on Mon Sep 17 12:37:06 2018
 
 import numpy as np
 import pandas as pd
+import sys
+import os
 
 class Robot():
     def __init__(self,x,y,dir):
@@ -65,6 +67,14 @@ class Robot():
         print(self.x,self.y,self.dir)
         return {'x':self.x, 'y':self.y, 'dir': self.dir}
  
+
+
+
+
+
+
+
+
 """
 robot = Robot(0,0,'NORTH')
 current_position = robot.report()
@@ -84,8 +94,9 @@ current_position = robot.report()
 robot.right()
 current_position = robot.report()"""
 
-robot = Robot(0,0,'NORTH')
-current_position = robot.report()
+
+
+
 '''
 commands = open("commands.txt","r")
 for line in commands.readlines():
@@ -104,21 +115,26 @@ for line in commands.readlines():
 
 robot.report()'''
 
+def main():  
+   filepath = sys.argv[1]
 
-filepath = 'commands.txt'
-with open(filepath) as fp:
-    
-    for line in enumerate(fp):
-        if line[1].rstrip() == 'REPORT':
-            current_position = robot.report()
-        elif line[1].rstrip() == 'MOVE':
-            robot.move()
-        elif line[1].rstrip() == 'RIGHT':
-            robot.right()
-        elif line[1].rstrip() == 'LEFT':
-            robot.left()
+   if not os.path.isfile(filepath):
+       print("File path {} does not exist. Exiting...".format(filepath))
+       sys.exit()
+   robot = Robot(0,0,'NORTH')
+   current_position = robot.report()
+   with open(filepath) as fp:
+       for line in enumerate(fp):
+           if line[1].rstrip() == 'REPORT':
+               current_position = robot.report()
+           elif line[1].rstrip() == 'MOVE':
+               robot.move()
+           elif line[1].rstrip() == 'RIGHT':
+               robot.right()
+           elif line[1].rstrip() == 'LEFT':
+               robot.left()
+           elif line[1].rstrip().find("PLACE"):
+               print(line)
 
-
-current_position = robot.report()
-
-
+if __name__ == '__main__':  
+   main()
