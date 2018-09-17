@@ -20,20 +20,39 @@ class Robot():
         self.dir = dir 
     
     def move(self):
-        pass
-    
+        if self.dir == 'NORTH':
+            self.y += 1
+        elif self.dir == 'SOUTH':
+            self.y -= 1
+        elif self.dir == 'EAST':
+            self.x += 1
+        elif self.dir == 'WEST':
+            self.x -= 1
+   
     def left(self):
-        pass
+        if self.dir == 'NORTH':
+            self.dir = 'WEST'
+        elif self.dir == 'SOUTH':
+            self.dir = 'EAST'
+        elif self.dir == 'WEST':
+            self.dir = 'SOUTH'
+        elif self.dir == 'EAST':
+            self.dir = 'NORTH'
     
     def right(self):
-        pass
+         if self.dir == 'NORTH':
+            self.dir = 'EAST'
+         elif self.dir == 'SOUTH':
+            self.dir = 'WEST'
+         elif self.dir == 'WEST':
+            self.dir = 'NORTH'
+         elif self.dir == 'EAST':
+            self.dir = 'SOUTH'
     
     def report(self):
         print(self.x,self.y,self.dir)
         return {'x':self.x, 'y':self.y, 'dir': self.dir}
  
-
-
 robot = Robot(0,0,'NORTH')
 current_position = robot.report()
 robot.move()
