@@ -2,7 +2,6 @@
 """
 Created on Tue Sep 18 01:22:38 2018
 
-@author: cecil
 """
 
 
